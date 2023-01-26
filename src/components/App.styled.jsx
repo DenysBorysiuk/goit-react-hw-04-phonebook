@@ -23,3 +23,10 @@ export const SubTitle = styled.h2`
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow.Out};
 `;
+
+export const Notice = styled.p`
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: ${props => props.theme.borderRadius};
+  box-shadow: ${props => props.theme.boxShadow.Out};
+`;

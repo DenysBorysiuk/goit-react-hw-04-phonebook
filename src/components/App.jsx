@@ -3,12 +3,12 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-import { Container, Title, SubTitle } from './App.styled';
+import { Container, Title, SubTitle, Notice } from './App.styled';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts') ?? []);
-  });
+  const [contacts, setContacts] = useState(() =>
+    JSON.parse(window.localStorage.getItem('contacts') ?? [])
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -56,10 +56,14 @@ export const App = () => {
 
       <SubTitle>Contacts</SubTitle>
       <Filter value={filter} onChangeFilter={handleChange} />
-      <ContactList
-        contacts={getVisibleContacts()}
-        onDeleteContact={deleteContact}
-      />
+      {contacts.length === 0 ? (
+        <Notice>Contacts list is empty!</Notice>
+      ) : (
+        <ContactList
+          contacts={getVisibleContacts()}
+          onDeleteContact={deleteContact}
+        />
+      )}
     </Container>
   );
 };
