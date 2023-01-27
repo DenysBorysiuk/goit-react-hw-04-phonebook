@@ -6,8 +6,8 @@ import { ContactList } from './ContactList/ContactList';
 import { Container, Title, SubTitle, Notice } from './App.styled';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(() =>
-    JSON.parse(window.localStorage.getItem('contacts') ?? [])
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
   );
   const [filter, setFilter] = useState('');
 
